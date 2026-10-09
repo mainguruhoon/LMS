@@ -1,0 +1,424 @@
+/* Base Settings */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    /* Soft, modern gradient background */
+    background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+    min-height: 100vh;
+    color: #333;
+    display: flex;
+    overflow-x: hidden;
+}
+
+/* Glassmorphism utility */
+.glass-panel {
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.05);
+}
+
+.glass-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* Forms & Buttons */
+input {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    color: #333;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    box-sizing: border-box;
+    transition: 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: #00f2fe;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.glass-btn {
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+    width: 100%;
+}
+
+.glass-btn:hover {
+    box-shadow: 0 5px 15px rgba(0, 242, 254, 0.4);
+    transform: translateY(-2px);
+}
+
+.small-btn {
+    padding: 8px 15px;
+    font-size: 0.9em;
+    width: auto;
+}
+
+/* ------------------------------------------- */
+/* Dashboard Layout                            */
+/* ------------------------------------------- */
+
+.dashboard-layout {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    height: 96vh;
+    margin: 2vh 1vw;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+    box-sizing: border-box;
+}
+
+.sidebar-logo {
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    margin-bottom: 20px;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    padding: 0 15px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    color: #444;
+    text-decoration: none;
+    border-radius: 8px;
+    margin-bottom: 5px;
+    font-weight: 500;
+    font-size: 0.95em;
+    transition: 0.2s ease;
+}
+
+.nav-item .material-icons {
+    margin-right: 15px;
+    font-size: 20px;
+    color: #666;
+}
+
+.nav-item:hover, .nav-item.active {
+    background: rgba(255, 255, 255, 0.8);
+    color: #000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.nav-item.active .material-icons {
+    color: #00f2fe;
+}
+
+/* Main Content area */
+.main-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 2vh 1vw 2vh 0;
+    height: 96vh;
+    box-sizing: border-box;
+}
+
+/* Topbar */
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.6);
+    padding: 8px 15px;
+    border-radius: 20px;
+    width: 300px;
+}
+.search-bar .material-icons { color: #666; margin-right: 10px; }
+
+.topbar-actions {
+    display: flex;
+    align-items: center;
+}
+
+.action-icon {
+    color: #555;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 5px 15px;
+    border-radius: 20px;
+    margin-left: 15px;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+    text-align: right;
+}
+
+.avatar .material-icons {
+    background: #00f2fe;
+    color: #fff;
+    border-radius: 50%;
+    padding: 5px;
+}
+
+/* Dashboard Grid */
+.dashboard-grid {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+/* Scrollbar styling */
+.dashboard-grid::-webkit-scrollbar { width: 6px; }
+.dashboard-grid::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.2); border-radius: 10px; }
+
+.widget-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+/* Top Widgets Row */
+.top-widgets {
+    flex-wrap: wrap;
+}
+
+.widget-card {
+    flex: 1;
+    min-width: 150px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.widget-card h3 { margin: 0 0 10px 0; font-size: 1em; color: #333; font-weight: 600; }
+.widget-card a { color: #00f2fe; text-decoration: none; font-size: 0.8em; font-weight: 600; }
+
+.icon-bg {
+    position: absolute;
+    right: -10px;
+    bottom: -10px;
+    font-size: 60px !important;
+    color: rgba(0, 0, 0, 0.03);
+}
+
+.highlight-card {
+    background: #1a2a6c; /* Dark blue */
+    color: #fff;
+}
+.highlight-card h3 { color: #fff; }
+.highlight-card .icon-bg { color: rgba(255,255,255,0.1); }
+
+/* Middle Widgets Row */
+.middle-widgets .weather-widget {
+    flex: 2;
+    background: #2b5876;
+    color: #fff;
+    padding: 20px;
+}
+
+.weather-info { display: flex; align-items: center; }
+.weather-info h4 { margin: 0 20px 0 0; font-weight: 500; letter-spacing: 1px; }
+.weather-info .temp h2 { margin: 0; font-size: 2em; }
+.weather-info .temp span { font-size: 0.8em; opacity: 0.8; }
+
+.id-card-widget {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Bottom Widgets Row */
+.bottom-widgets {
+    flex-wrap: wrap;
+}
+
+.main-widget {
+    flex: 1;
+    min-width: 300px;
+    padding: 20px;
+}
+
+.main-widget h3 {
+    margin-top: 0;
+    color: #2b5876;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    padding-bottom: 10px;
+}
+
+.message-box {
+    background: rgba(0,0,0,0.05);
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 0.9em;
+    line-height: 1.5;
+}
+
+/* Data Tables */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.data-table th, .data-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    font-size: 0.9em;
+}
+
+.data-table th {
+    font-weight: 600;
+    color: #555;
+}
+
+.announcements-widget .announcement-item {
+    background: rgba(255,255,255,0.8);
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 15px;
+}
+
+.announcement-item h4 { margin: 0 0 5px 0; color: #d32f2f; }
+.announcement-item .badge { background: #475569; color: #fff; padding: 3px 8px; border-radius: 4px; font-size: 0.7em; }
+.announcement-item p { margin: 10px 0 0 0; font-size: 0.9em; color: #555; }
+
+/* Grid for admin/teacher data */
+.data-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+
+.student-card {
+    background: rgba(255,255,255,0.7);
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid #00f2fe;
+}
+.student-card p { margin: 5px 0; font-size: 0.9em; }
+
+/* ------------------------------------------- */
+/* Role Selection & Advanced Forms             */
+/* ------------------------------------------- */
+
+.text-center { text-align: center; }
+
+.role-cards {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.role-card {
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 16px;
+    padding: 40px 20px;
+    width: 200px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.role-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.role-card.admin:hover { box-shadow: 0 15px 35px rgba(156, 39, 176, 0.2); border-bottom: 4px solid #9c27b0; }
+.role-card.teacher:hover { box-shadow: 0 15px 35px rgba(0, 150, 136, 0.2); border-bottom: 4px solid #009688; }
+.role-card.student:hover { box-shadow: 0 15px 35px rgba(33, 150, 243, 0.2); border-bottom: 4px solid #2196f3; }
+
+.role-icon {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+.role-card.admin .role-icon { color: #9c27b0; }
+.role-card.teacher .role-icon { color: #009688; }
+.role-card.student .role-icon { color: #2196f3; }
+
+.role-card h3 { margin: 0 0 10px 0; font-size: 1.2em; color: #333; }
+.role-card p { margin: 0; font-size: 0.85em; color: #666; }
+
+/* Grid Forms */
+.grid-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group.full-width {
+    grid-column: span 2;
+}
+
+.form-group label {
+    font-size: 0.85em;
+    font-weight: 600;
+    color: #444;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.form-group input {
+    margin-bottom: 0; /* Override default input margin inside grid */
+}
+
+.back-btn {
+    background: rgba(0,0,0,0.1);
+    color: #333;
+    border: none;
+}
+.back-btn:hover {
+    background: rgba(0,0,0,0.2);
+}

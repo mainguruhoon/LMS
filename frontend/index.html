@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Professional Portal</title>
+    <!-- Use Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Use Material Icons for sidebar and widgets -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="glass-style.css">
+</head>
+<body>
+
+    <!-- ROLE SELECTION & LOGIN SCREEN -->
+    <main id="loginSection" class="glass-container login-layout">
+        
+        <!-- Role Selection -->
+        <div id="roleSelection" class="glass-panel text-center" style="max-width: 800px; margin: 100px auto;">
+            <h2 style="font-size: 2.5em; margin-bottom: 10px;">Welcome to CUIMS Portal</h2>
+            <p style="opacity: 0.8; margin-bottom: 40px; font-size: 1.1em;">Please select your role to continue securely.</p>
+            
+            <div class="role-cards">
+                <div class="role-card admin" onclick="selectRole('admin')">
+                    <span class="material-icons role-icon">admin_panel_settings</span>
+                    <h3>Admin Portal</h3>
+                    <p>Manage system & users</p>
+                </div>
+                
+                <div class="role-card teacher" onclick="selectRole('teacher')">
+                    <span class="material-icons role-icon">co_present</span>
+                    <h3>Teacher Portal</h3>
+                    <p>Manage grades & attendance</p>
+                </div>
+                
+                <div class="role-card student" onclick="selectRole('student')">
+                    <span class="material-icons role-icon">school</span>
+                    <h3>Student Portal</h3>
+                    <p>Access academic records</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Login Form (Hidden initially) -->
+        <div id="loginFormContainer" class="glass-panel" style="max-width: 450px; margin: 100px auto; text-align: center; display: none;">
+            <button onclick="backToRoles()" class="glass-btn small-btn back-btn" style="margin-bottom: 20px;"><span class="material-icons" style="font-size: 16px; vertical-align: middle;">arrow_back</span> Back to Roles</button>
+            <h2 id="loginTitle">Secure Login</h2>
+            <p style="opacity: 0.8; margin-bottom: 25px;">Enter your credentials to access your dashboard.</p>
+            <form id="loginForm">
+                <input type="hidden" id="selectedRole">
+                <input type="text" id="loginUsername" placeholder="Username / UID" required>
+                <input type="password" id="loginPassword" placeholder="Password" required>
+                <button type="submit" class="glass-btn login-btn">Access Portal</button>
+            </form>
+        </div>
+
+    </main>
+
+    <!-- DASHBOARD CONTAINER (Hidden by default) -->
+    <div id="dashboardSection" style="display: none;" class="dashboard-layout">
+        
+        <!-- SIDEBAR -->
+        <aside class="sidebar glass-panel">
+            <div class="sidebar-logo">
+                <h2 style="color: #00f2fe; margin: 0; font-weight: 700;">CU<span style="color: white;">IMS</span></h2>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active"><span class="material-icons">school</span> Academics</a>
+                <a href="#" class="nav-item"><span class="material-icons">account_balance_wallet</span> Accounts</a>
+                <a href="#" class="nav-item"><span class="material-icons">admin_panel_settings</span> Administration</a>
+                <a href="#" class="nav-item"><span class="material-icons">request_quote</span> Apply for Loan</a>
+                <a href="#" class="nav-item"><span class="material-icons">description</span> Apply for NOC</a>
+                <a href="#" class="nav-item"><span class="material-icons">favorite</span> Student Wellbeing</a>
+                <a href="#" class="nav-item"><span class="material-icons">local_library</span> E Library</a>
+                <a href="#" class="nav-item"><span class="material-icons">assignment</span> Examination</a>
+                <a href="#" class="nav-item"><span class="material-icons">hotel</span> Hostel</a>
+            </nav>
+        </aside>
+
+        <!-- MAIN CONTENT AREA -->
+        <div class="main-content">
+            
+            <!-- TOP HEADER -->
+            <header class="topbar glass-panel">
+                <div class="search-bar">
+                    <span class="material-icons">search</span>
+                    <input type="text" placeholder="Search & Bookmark your page" style="margin: 0; background: transparent; border: none; outline: none; box-shadow: none;">
+                </div>
+                <div class="topbar-actions">
+                    <span class="material-icons action-icon">notifications</span>
+                    <span class="material-icons action-icon">menu_book</span>
+                    <span class="material-icons action-icon">home</span>
+                    <span class="material-icons action-icon">settings</span>
+                    <div class="user-profile">
+                        <div class="user-info">
+                            <span id="userNameDisplay" style="font-weight: 600;">USER NAME</span>
+                            <span id="userRoleDisplay" style="font-size: 0.8em; opacity: 0.7; text-transform: uppercase;">ROLE</span>
+                        </div>
+                        <div class="avatar"><span class="material-icons">person</span></div>
+                    </div>
+                    <button id="logoutBtn" class="glass-btn logout-btn" style="margin-left: 15px; padding: 5px 10px;">Logout</button>
+                </div>
+            </header>
+
+            <!-- DASHBOARD WIDGETS -->
+            <div class="dashboard-grid">
+                
+                <!-- TOP WIDGETS ROW -->
+                <div class="widget-row top-widgets">
+                    <div class="glass-panel widget-card">
+                        <h3>Important Links</h3>
+                        <a href="#">CLICK HERE</a>
+                        <span class="material-icons icon-bg">link</span>
+                    </div>
+                    <div class="glass-panel widget-card">
+                        <h3>Student Facilitation</h3>
+                        <a href="#">CLICK TO VIEW</a>
+                        <span class="material-icons icon-bg">play_circle</span>
+                    </div>
+                    <div class="glass-panel widget-card">
+                        <h3>Anti Ragging</h3>
+                        <a href="#">READ NOW</a>
+                        <span class="material-icons icon-bg">warning</span>
+                    </div>
+                    <div class="glass-panel widget-card highlight-card">
+                        <h3>CU LMS</h3>
+                        <a href="#">CLICK HERE</a>
+                        <span class="material-icons icon-bg">school</span>
+                    </div>
+                    <div class="glass-panel widget-card">
+                        <h3>My University Email</h3>
+                        <a href="#">VIEW DETAILS</a>
+                        <span class="material-icons icon-bg">email</span>
+                    </div>
+                </div>
+
+                <!-- MIDDLE WIDGETS ROW -->
+                <div class="widget-row middle-widgets">
+                    <div class="glass-panel weather-widget">
+                        <div class="weather-info">
+                            <h4>UNIVERSITY WEATHER</h4>
+                            <span class="material-icons" style="font-size: 40px; margin: 0 15px;">wb_sunny</span>
+                            <div class="temp">
+                                <h2>31°C</h2>
+                                <span>clear sky</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="glass-panel id-card-widget">
+                        <h3>Download Virtual ID Card</h3>
+                        <button class="glass-btn small-btn">Download Now</button>
+                    </div>
+                </div>
+
+                <!-- BOTTOM WIDGETS ROW -->
+                <div class="widget-row bottom-widgets">
+                    
+                    <!-- ADMIN SECTION (Only visible to Admin) -->
+                    <div id="adminPanel" class="glass-panel main-widget" style="display: none;">
+                        <h3>Admin Controls</h3>
+                        
+                        <div style="margin-bottom: 20px; text-align: center;">
+                            <button id="showStudentRegBtn" class="glass-btn small-btn" style="background: rgba(33, 150, 243, 0.4); border-color: #2196f3;" onclick="toggleAdminView('student')">Register Student</button>
+                            <button id="showTeacherRegBtn" class="glass-btn small-btn" style="margin-left: 10px;" onclick="toggleAdminView('teacher')">Register Teacher</button>
+                        </div>
+
+                        <!-- STUDENT REGISTRATION FORM -->
+                        <div id="adminStudentSection" class="form-section">
+                            <h4>Register New Student</h4>
+                            <form id="adminForm" class="grid-form">
+                                <div class="form-group">
+                                    <label>UID (Enrollment ID)</label>
+                                    <input type="text" id="regEnrollment" placeholder="e.g. CS-001" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Full Name</label>
+                                    <input type="text" id="regName" placeholder="Student Name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Account Password</label>
+                                    <input type="text" id="regStudentPassword" placeholder="Login Password" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Course</label>
+                                    <input type="text" id="regCourse" placeholder="Course Name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Subject</label>
+                                    <input type="text" id="regSubject" placeholder="Primary Subject">
+                                </div>
+                                <div class="form-group">
+                                    <label>Subject Marks (%)</label>
+                                    <input type="number" id="regMarks" placeholder="e.g. 85">
+                                </div>
+                                <div class="form-group">
+                                    <label>Overall Attendance (%)</label>
+                                    <input type="number" id="regAttendance" placeholder="e.g. 90">
+                                </div>
+                                <div class="form-group">
+                                    <label>Grade</label>
+                                    <input type="text" id="regGrade" placeholder="e.g. A">
+                                </div>
+                                <div class="form-group full-width" style="margin-top: 15px;">
+                                    <button type="submit" class="glass-btn">Register Student</button>
+                                </div>
+                            </form>
+                            <h4 style="margin-top: 30px;">All Students</h4>
+                            <div id="adminGrid" class="data-grid"></div>
+                        </div>
+
+                        <!-- TEACHER REGISTRATION FORM -->
+                        <div id="adminTeacherSection" class="form-section" style="display: none;">
+                            <h4>Register New Teacher</h4>
+                            <form id="adminTeacherForm" class="grid-form">
+                                <div class="form-group">
+                                    <label>Employee ID</label>
+                                    <input type="text" id="regTeacherId" placeholder="e.g. T-101" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Full Name</label>
+                                    <input type="text" id="regTeacherName" placeholder="Teacher Name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Account Password</label>
+                                    <input type="text" id="regTeacherPassword" placeholder="Login Password" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Department</label>
+                                    <input type="text" id="regTeacherDept" placeholder="e.g. Computer Science" required>
+                                </div>
+                                <div class="form-group full-width">
+                                    <label>Subjects Taught (Comma separated)</label>
+                                    <input type="text" id="regTeacherSubjects" placeholder="e.g. Math, Physics">
+                                </div>
+                                <div class="form-group full-width" style="margin-top: 15px;">
+                                    <button type="submit" class="glass-btn" style="background: rgba(0, 150, 136, 0.4); border-color: #009688;">Register Teacher</button>
+                                </div>
+                            </form>
+                            <h4 style="margin-top: 30px;">All Teachers</h4>
+                            <div id="adminTeacherGrid" class="data-grid"></div>
+                        </div>
+                    </div>
+
+                    <!-- TEACHER SECTION (Only visible to Teacher) -->
+                    <div id="teacherPanel" class="glass-panel main-widget" style="display: none;">
+                        <h3>Teacher Controls - Update Records</h3>
+                        <div class="form-section">
+                            <form id="teacherForm" class="grid-form">
+                                <div class="form-group full-width">
+                                    <label>UID (Enrollment ID)</label>
+                                    <input type="text" id="updateEnrollment" placeholder="Student Enrollment ID" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Subject Name</label>
+                                    <input type="text" id="updateSubject" placeholder="Subject Name">
+                                </div>
+                                <div class="form-group">
+                                    <label>Subject Marks (%)</label>
+                                    <input type="number" id="updateMarks" placeholder="e.g. 95">
+                                </div>
+                                <div class="form-group">
+                                    <label>Attendance (%)</label>
+                                    <input type="number" id="updateAttendance" placeholder="e.g. 92">
+                                </div>
+                                <div class="form-group">
+                                    <label>Overall Grade</label>
+                                    <input type="text" id="updateGrade" placeholder="e.g. A+">
+                                </div>
+                                <div class="form-group full-width" style="margin-top: 15px;">
+                                    <button type="submit" class="glass-btn">Update Record</button>
+                                </div>
+                            </form>
+                        </div>
+                        <h4 style="margin-top: 30px;">My Students</h4>
+                        <div id="teacherGrid" class="data-grid"></div>
+                    </div>
+
+                    <!-- STUDENT SECTION (Important Message & Course Attendance) -->
+                    <div id="studentMessagePanel" class="glass-panel main-widget student-only" style="display: none;">
+                        <h3>Important Message</h3>
+                        <div class="message-box">
+                            <p>1. Pending Documents: The status of pending documents is given below. You are required to submit the same in Block-B1.</p>
+                            <p><strong>Document Remarks:</strong> No Documents Pending</p>
+                        </div>
+                    </div>
+
+                    <div id="studentCoursePanel" class="glass-panel main-widget student-only" style="display: none;">
+                        <h3>My Course & Attendance</h3>
+                        <p style="font-size: 0.9em; opacity: 0.8;" id="studentCourseName">Master of Computer Applications</p>
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Subject</th>
+                                    <th>Sem.</th>
+                                    <th>Marks %</th>
+                                </tr>
+                            </thead>
+                            <tbody id="studentSubjectsBody">
+                                <!-- Dynamic subjects will be populated here -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- ANNOUNCEMENTS WIDGET (Visible to all) -->
+                    <div class="glass-panel main-widget announcements-widget">
+                        <h3>Announcements ( ALL )</h3>
+                        <div class="search-bar small">
+                            <input type="text" placeholder="Search Announcement">
+                        </div>
+                        <div class="announcement-item">
+                            <h4>📌 RULE BOOK- FRESH GEN FIESTA</h4>
+                            <span class="badge">11 SEP 2026</span>
+                            <p>FRESH GEN FIESTA 3.0 COMPETITION RULEBOOK...</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
